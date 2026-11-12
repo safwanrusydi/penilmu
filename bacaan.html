@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sudut bacaan · Penuntut Ilmu Kecil</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1F6B5A">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ilmu Kecil">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="wrap">
+  <a class="back" href="index.html">&larr; Laman utama</a>
+  <h1>Sudut bacaan</h1>
+  <p class="tag">Tulisan asal dan kitab terjemahan dalam bentuk PDF.</p>
+  <div class="btns">
+    <a class="btn primary" href="https://t.me/kitabpdfterjemahan">Buka channel Telegram</a>
+  </div>
+  <p class="note">Tulisan asal dibaca terus di laman ini. Kitab terjemahan dibuka di channel Telegram.</p>
+
+  <div id="books">
+    <input id="q" type="search" placeholder="Cari tajuk atau pengarang" aria-label="Cari kitab">
+    <div class="chips" id="cats"></div>
+    <div id="list"></div>
+  </div>
+
+  <p class="note">Untuk tujuan rujukan sahaja dan bukan untuk diperjual beli. Dapatkan versi bercetak di kedai kitab.</p>
+  <footer>Penuntut Ilmu Kecil &middot; Perkongsian ilmu</footer>
+</main>
+<script>
+const BOOKS=[
+  {"t": "Tatacara Solat", "a": "Mohd Safwan b. Mohd Rusydi", "c": "Tulisan Asal", "u": "baca.html?f=tatacara-solat"},
+  {"t": "Tatacara Wuduk dan Tayammum", "a": "Mohd Safwan b. Mohd Rusydi", "c": "Tulisan Asal", "u": "baca.html?f=tatacara-wuduk-tayammum"},
+  {"t": "Tafsir At-Thabari", "c": "Tafsir", "u": "https://t.me/kitabpdfterjemahan/3"},
+  {"t": "Tafsir Al-Qurtubi", "c": "Tafsir", "u": "https://t.me/kitabpdfterjemahan/33"},
+  {"t": "Tafsir Mudah Ibnu Kathir", "c": "Tafsir", "u": "https://t.me/kitabpdfterjemahan/58"},
+  {"t": "Tafsir Fathul Qadir", "c": "Tafsir", "u": "https://t.me/kitabpdfterjemahan/69"},
+  {"t": "Fathul Baari", "c": "Hadis", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Al-Wara’ Imam Ahmad dan Ibnu Abi Dunya", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Al-Minhaj Syarah Shahih Muslim", "c": "Hadis", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Ringkasan Siyar A’lam An-Nubala", "c": "Sejarah & Sirah", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Al-Majmu’ Syarah Al-Muhazzab", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Al-Muhalla", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Kifayatul Akhyar", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Raudhatut Thalibin", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Riyadush Shalihin", "c": "Hadis", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Kitab Al-Adzkar", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Ringkasan Al-Bidayah Wan-Nihayah", "c": "Sejarah & Sirah", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Bidayah Wan-Nihayah: Khulafa al-Rasyidin", "c": "Sejarah & Sirah", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "An-Nihayah Wal Malahim", "c": "Sejarah & Sirah", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Mukhtasar Ihya Ulumuddin", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Ihya Ulumuddin", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Tazkiyatun Nafs (Intisari Ihya)", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Al-Durrah Al-Fakhirah", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Minhajul Abidin", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Tahafut Al-Falasifah", "c": "Akidah", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Kimiya Saadah", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Ayyuhal Walad", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Al-Mughni", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Aunul Ma’bud", "c": "Hadis", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Tuhfatul Ahwadzi", "c": "Hadis", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "At-Tadzhib fi Adillati Matan Al-Ghayah wat-Taqrib", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Ar-Risalah", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Ringkasan Kitab Al-Umm", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Al-Umm (Versi Lengkap)", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Zaadul Maad", "c": "Sejarah & Sirah", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Madarijus Salikin", "c": "Akhlak & Tasawuf", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "I’lamul Muwaqi’in", "c": "Fiqh & Usul", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Hilyatul Auliya", "c": "Sejarah & Sirah", "u": "https://t.me/kitabpdfterjemahan/191"},
+  {"t": "Al-Mustadrak", "c": "Hadis", "u": "https://t.me/kitabpdfterjemahan/191"}
+];
+const COL={'Tafsir':'#1F6B5A','Hadis':'#2F5D8C','Fiqh & Usul':'#6E4A86','Akhlak & Tasawuf':'#8A5E14','Sejarah & Sirah':'#8C3B3B','Akidah':'#3F4A5A','Tulisan Asal':'#0B5D6B'};
+if(BOOKS.length){
+  const box=document.getElementById('books'),q=document.getElementById('q'),cats=document.getElementById('cats'),list=document.getElementById('list');
+  let cat='Semua';box.hidden=false;
+  const draw=()=>{
+    const s=q.value.trim().toLowerCase();list.textContent='';
+    [...cats.children].forEach(x=>x.setAttribute('aria-pressed',x.textContent===cat));
+    BOOKS.filter(b=>(cat==='Semua'||b.c===cat)&&(b.t+' '+(b.a||'')).toLowerCase().includes(s)).forEach(b=>{
+      const a=document.createElement('a');a.className='book';a.href=b.u;a.setAttribute('aria-label',b.t);
+      const cv=document.createElement('div');cv.className='cover';cv.style.setProperty('--cc',COL[b.c]||'#3F4A5A');
+      if(b.i){const im=document.createElement('img');im.src=b.i;im.alt='';im.loading='lazy';cv.className='cover img';cv.append(im);}
+      else{const k=document.createElement('span');k.className='k';k.textContent=b.c||'';const t=document.createElement('span');t.className='t';t.textContent=b.t;cv.append(k,t);if(b.a){const au=document.createElement('span');au.className='au';au.textContent=b.a;cv.append(au);}}
+      a.append(cv);
+      if(b.i){const cap=document.createElement('span');cap.className='cap';cap.textContent=b.t;a.append(cap);}
+      list.appendChild(a);
+    });
+    if(!list.children.length)list.textContent='Tiada hasil.';
+  };
+  ['Semua',...new Set(BOOKS.map(b=>b.c).filter(Boolean))].forEach(n=>{
+    const x=document.createElement('button');x.type='button';x.className='chip';x.textContent=n;
+    x.onclick=()=>{cat=n;draw();};cats.appendChild(x);
+  });
+  q.addEventListener('input',draw);draw();
+}
+if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ms"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Belajar Fekah Mazhab Syafie</title>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1b4332">
+<link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Belajar Fekah"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+:root{--p:#1b4332;--pl:#2d6a4f;--a:#d4af37;--bg:#f8f9fa;--t:#2b2b2b}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--t);line-height:1.6;padding-bottom:30px}
+header{background:var(--p);color:#fff;padding:2rem 1rem;text-align:center;border-bottom:5px solid var(--a)}
+.hd{display:flex;align-items:center;justify-content:center;gap:.9rem;text-align:left}.lg{width:84px;height:84px;flex:none;background:#fff;border-radius:18px;padding:4px;object-fit:contain;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+header h1{font-size:1.7rem}header p{font-size:.9rem;opacity:.9}
+nav{background:var(--pl);padding:.8rem;position:sticky;top:0;z-index:100;overflow-x:auto;white-space:nowrap}
+nav a{color:#fff;text-decoration:none;margin:0 6px;font-weight:bold;font-size:.9rem;padding:4px 8px}
+.c{max-width:900px;margin:1.5rem auto;padding:0 1rem}
+section{background:#fff;padding:1.4rem;border-radius:10px;margin-bottom:1.6rem;box-shadow:0 4px 10px rgba(0,0,0,.06)}
+h2{color:var(--p);border-bottom:2px solid var(--a);padding-bottom:.5rem;margin-bottom:1rem;font-size:1.35rem}
+h3{color:var(--pl);margin:1.1rem 0 .3rem;font-size:1.05rem}
+ul,ol{margin:0 0 1rem 1.3rem}li{margin-bottom:.35rem}
+.btn{background:var(--p);color:#fff;border:0;padding:.7rem 1.2rem;border-radius:6px;cursor:pointer;font-weight:bold;margin-top:1rem;display:block;text-decoration:none;width:100%;text-align:center;font-size:1rem}
+.wa{background:#25d366}
+.m{display:none;position:fixed;inset:0;background:rgba(0,0,0,.65);justify-content:center;align-items:center;z-index:200;padding:1rem}
+.mc{background:#fff;padding:1.2rem;border-radius:12px;max-width:520px;width:100%;max-height:88vh;overflow-y:auto}
+.q{margin:.8rem 0;padding-bottom:.5rem;border-bottom:1px solid #eee}
+.o{display:block;margin:.3rem 0;padding:.5rem;background:#f0f4f1;border-radius:6px;font-size:.92rem}
+.o input{margin-right:8px}.ok{background:#c8e6c9}.no{background:#ffcdd2}
+label{font-weight:bold;display:block}
+input[type=text],input[type=email],textarea{width:100%;padding:.7rem;margin:.3rem 0 1rem;border:1px solid #ccc;border-radius:6px;font-size:1rem}
+.ib{background:#e9f5ed;border-left:5px solid var(--p);padding:1.1rem;border-radius:6px;margin-top:1rem}
+.ban{border-radius:10px;overflow:hidden;margin:-.2rem 0 1rem;line-height:0}.ban svg{width:100%;height:auto}
+h3 .e{display:inline-block;width:1.7em;height:1.7em;line-height:1.7em;text-align:center;background:#e9f5ed;border-radius:50%;margin-right:.4rem;font-size:.95rem}
+#inst{display:none;margin:.9rem auto 0;width:auto;background:var(--a);color:#1b1b1b;padding:.55rem 1.1rem}#ios{display:none;font-size:.82rem;margin-top:.6rem;opacity:.95}
+.au{background:#f0f4f1;border-radius:10px;padding:.8rem;margin:0 0 1rem}.au b{display:block;font-size:.95rem;margin-bottom:.3rem}.au audio{width:100%}.au small{opacity:.7}.au iframe{display:block;width:100%;height:200px;border:0;border-radius:10px;margin:.5rem 0}.au .btn{margin:.2rem .4rem 0 0}.aus{margin:0 0 1rem}
+.bs{background:var(--p);color:#fff;padding:.5rem .9rem;border-radius:8px;margin:1.6rem 0 .4rem;font-weight:bold;font-size:1.05rem}
+footer{background:var(--p);color:#fff;text-align:center;padding:1.5rem 1rem;margin-top:2rem;border-top:4px solid var(--a);font-size:.9rem}
+</style></head><body>
+<header><div class="hd"><img class="lg" src="logo.png" alt="Logo Penuntut Ilmu Kecil"><div><h1>Belajar Fekah Mazhab Syafie</h1><p>Ringkasan Fiqh al-Manhaji oleh Penuntut Ilmu Kecil</p></div></div><a class="btn" href="../" style="text-decoration:none;display:inline-block">← Laman Utama</a> <button class="btn" id="inst">📲 Pasang Aplikasi</button><p id="ios">Pada iPhone: tekan butang Kongsi, kemudian "Tambah ke Skrin Utama".</p></header>
+<nav id="nav"></nav>
+<div class="c" id="main"></div>
+<section id="infaq" style="margin:0 1rem 1.6rem"><h2>Infaq &amp; Dana Menaiktaraf Website</h2>
+<p>Sokong usaha dakwah dan pembangunan projek <b>Penuntut Ilmu Kecil</b>: menaiktaraf sistem, menambah modul pembelajaran dan kos operasi.</p>
+<div class="ib"><p>Untuk infaq atau pertanyaan, hubungi terus melalui WhatsApp:</p>
+<a class="btn wa" target="_blank" href="https://wa.me/60128255341?text=Assalamualaikum,%20saya%20ingin%20berikan%20sumbangan%20infaq%20untuk%20menaiktaraf%20website%20Penuntut%20Ilmu%20Kecil.">📱 Hubungi via WhatsApp</a>
+<p style="margin-top:10px;font-size:.9rem;text-align:center"><i>"Jazakumullahu Khairan Kathiran atas sokongan anda."</i></p></div></section>
+<section id="cadangan" style="margin:0 1rem 1.6rem"><h2>Cadangan Penambahbaikan</h2>
+<p>Kemukakan cadangan anda untuk memperbaiki mutu maklumat di laman ini. Cadangan akan dihantar terus melalui WhatsApp.</p>
+<form id="cf"><label for="nama">Nama:</label><input type="text" id="nama" required>
+<label for="mesej">Cadangan:</label><textarea id="mesej" rows="4" required></textarea>
+<button type="submit" class="btn wa">📱 Hantar melalui WhatsApp</button></form></section>
+<footer>&copy; Belajar Fekah Mazhab Syafie · Dibangunkan oleh <b>Penuntut Ilmu Kecil</b><br>Rujukan: <i>Kitab Fikah Mazhab Syafie (Fiqh al-Manhaji) Jilid 1</i>, Pustaka Salam; <i>Fikih Islam Lengkap</i>, Dr. Musthafa Diib al-Bugha, Media Zikir.<br>Ringkasan ini bukan pengganti kitab dan guru. Rujuk kitab asal untuk perincian.</footer>
+<div id="qm" class="m"><div class="mc"><h3 id="qt"></h3><div id="qb"></div><div id="qr" style="font-weight:bold;margin-top:10px"></div>
+<button class="btn" id="qs" onclick="sub()">Hantar Jawapan</button><button class="btn" onclick="openQ(cur,ci)" style="background:#c0392b">Ulang Kuiz</button><button class="btn" onclick="qm.style.display='none'" style="background:#7f8c8d">Tutup</button></div></div>
+<script src="audio.js"></script>
+<script>
+const L=(a)=>'<ul>'+a.map(x=>'<li>'+x+'</li>').join('')+'</ul>',N=(a)=>'<ol>'+a.map(x=>'<li>'+x+'</li>').join('')+'</ol>';
+const C=[
+{id:'taharah',n:'Taharah',t:'1. Taharah &amp; Najis',h:`<h3>Takrif</h3><p>Taharah ialah bersuci daripada najis dan hadas. Ia syarat sah solat dan banyak ibadah lain.</p>
+<h3>Jenis Air (4)</h3>`+N(['Suci dan menyucikan (air mutlak seperti air hujan, laut, sungai dan perigi).','Suci dan menyucikan tetapi makruh (contohnya air yang dipanaskan matahari dalam bekas logam).','Suci tetapi tidak menyucikan (air musta\'mal atau air yang bercampur sehingga hilang nama mutlaknya).','Air mutanajjis, iaitu air yang terkena najis dan tidak boleh digunakan untuk bersuci.'])+`<p>Menggunakan bekas daripada emas dan perak adalah haram.</p>
+<h3>Benda-benda Najis (7)</h3>`+N(['Arak dan semua cecair yang memabukkan.','Anjing dan babi.','Bangkai (haiwan mati tanpa sembelihan syarie).','Darah yang mengalir dan nanah.','Air kencing dan tahi.','Bahagian yang tercerai daripada haiwan semasa hidup.','Susu haiwan yang tidak halal dimakan dagingnya.'])+`<p>Tiga bangkai tidak najis: ikan, belalang dan manusia.</p>
+<h3>Jenis Najis</h3>`+L(['<b>Najis aini:</b> mempunyai jirim, warna atau bau. <b>Najis hukmi:</b> najis kering yang kesannya sudah hilang.','<b>Mughallazah (berat):</b> najis anjing dan babi.','<b>Mukhaffafah (ringan):</b> air kencing bayi lelaki kurang 2 tahun yang hanya meminum susu ibu.','<b>Mutawassitah (pertengahan):</b> najis lain seperti air kencing, tahi dan darah.'])+`<h3>Cara Menyucikan Najis</h3>`+L(['<b>Mughallazah:</b> basuh 7 kali dan salah satunya dengan tanah.','<b>Mukhaffafah:</b> cukup direnjis air secara rata.','<b>Mutawassitah:</b> hilangkan najis aini (warna, bau, rasa) dengan air. Najis hukmi cukup dialirkan air.'])+`<h3>Najis yang Dimaafkan</h3><p>Antaranya percikan kencing yang terlalu sedikit hingga tidak kelihatan, darah atau nanah luka yang tidak mengalir ke tempat lain, darah pada daging, dan tanah jalan yang terkena manusia.</p>
+<h3>Istinjak</h3>`+L(['Menghilangkan najis dari qubul atau dubur, dengan air mutlak atau dengan batu atau benda pejal yang suci.','Jika dengan batu, tidak kurang 3 sapuan atau 3 biji dan disunatkan ganjil.','Tidak sah dengan benda najis. Gunakan tangan kiri.'])+`<h3>Hadas</h3><p><b>Hadas kecil</b> disucikan dengan wuduk. <b>Hadas besar</b> disucikan dengan mandi.</p>`,
+q:`Air yang suci dan menyucikan dipanggil?|Air mutanajjis|Air mutlak|Air musta'mal|Air makruh|1
+Berapakah jenis air dalam bab ini?|2|3|4|6|2
+Bekas yang haram digunakan ialah?|Kaca|Emas dan perak|Tanah liat|Kayu|1
+Najis mughallazah ialah najis?|Anjing dan babi|Bayi lelaki|Darah|Tahi|0
+Najis mughallazah dibasuh?|3 kali|5 kali|7 kali dan satu dengan tanah|1 kali sahaja|2
+Najis mukhaffafah ialah?|Darah|Tahi haiwan|Arak|Air kencing bayi lelaki yang hanya minum susu|3
+Bangkai yang tidak najis?|Ikan dan belalang|Lembu|Ayam|Kambing|0
+Beristinjak dengan batu sekurang-kurangnya?|1 biji|2 biji|3 biji|7 biji|2
+Najis hukmi ialah?|Najis berwarna dan berbau|Najis anjing|Najis kering yang kesannya sudah hilang|Darah|2
+Hadas besar disucikan dengan?|Wuduk|Mandi|Tayamum sahaja|Istinjak|1`},
+{id:'mandi',h:`<h3>Takrif</h3><p>Mengalirkan air ke seluruh badan dengan niat untuk menghilangkan hadas besar.</p>
+<h3>Sebab Mandi Wajib</h3>`+L(['Keluar mani.','Jimak (memasukkan kemaluan).','Haid dan nifas.','Melahirkan anak (wiladah).','Mati (jenazah wajib dimandikan, selain syahid).'])+`<h3>Fardhu Mandi (2)</h3>`+N(['Niat menghilangkan hadas besar (mandi wajib).','Meratakan air ke seluruh badan yang zahir termasuk kulit dan rambut, hingga ke pangkal rambut.'])+`<h3>Sunat Mandi</h3><p>Membaca bismillah, berwuduk dahulu, menyelati rambut, memulakan dengan kepala dan sebelah kanan, menggosok badan dan membasuh tiga kali.</p>
+<h3>Makruh</h3><p>Berlebih-lebihan menggunakan air dan mandi dalam air yang bertakung.</p>
+<h3>Haram Bagi yang Berjunub</h3><p>Solat, tawaf, menyentuh atau membaca Al-Quran, dan berhenti di dalam masjid.</p>
+<h3>Mandi Sunat</h3><p>Mandi hari Jumaat, dua hari raya, solat gerhana, solat istisqa', selepas memandikan mayat dan mandi berkaitan ibadah haji.</p>
+<h3>Nota Tayamum Ganti Mandi</h3><p>Orang yang berhadas besar boleh bertayamum jika ada sebab yang dibenarkan, dengan cara yang sama seperti tayamum ganti wuduk.</p>`,
+q:`Berapakah fardhu mandi wajib?|1|2|3|4|1
+Antara sebab mandi wajib?|Tidur|Makan|Keluar mani|Bersiwak|2
+Mandi wajib juga bagi wanita selepas?|Makan|Haid dan nifas|Solat|Tidur|1
+Fardhu mandi yang pertama ialah?|Berwuduk|Menggosok|Tiga kali|Niat|3
+Air mesti sampai ke?|Seluruh badan zahir termasuk kulit dan rambut|Muka sahaja|Kepala sahaja|Tangan dan kaki|0
+Haram bagi orang berjunub?|Makan|Solat|Tidur|Minum|1
+Mandi sunat ialah?|Mandi selepas makan|Mandi sebelum tidur|Mandi hari Jumaat|Mandi selepas bersenam|2
+Yang makruh ketika mandi?|Menggosok badan|Berlebih-lebihan menggunakan air|Memulakan sebelah kanan|Membaca bismillah|1
+Wiladah bermaksud?|Haid|Mati|Jimak|Melahirkan anak|3
+Tayamum juga boleh menjadi ganti kepada?|Mandi wajib|Solat|Puasa|Zakat|0`},
+{id:'wuduk',n:'Wuduk',t:'2. Wuduk, Tayamum &amp; Mandi Wajib',h:`<h3>Takrif</h3><p>Perbuatan menggunakan air pada anggota-anggota tertentu beserta niat.</p>
+<h3>Fardhu Wuduk (6)</h3>`+N(['Niat dalam hati, serentak ketika membasuh bahagian pertama muka. Melafazkannya disunatkan.','Membasuh seluruh muka: dari tempat tumbuh rambut hingga bawah dagu, dan dari telinga ke telinga.','Membasuh kedua-dua tangan hingga siku (siku termasuk).','Menyapu sebahagian kepala, walaupun sehelai rambut.','Membasuh kedua-dua kaki hingga buku lali.','Tertib mengikut susunan di atas.'])+`<h3>Sunat Wuduk</h3>`+L(['Membaca bismillah, membasuh dua tapak tangan, berkumur dan memasukkan air ke hidung.','Menyapu kedua telinga (zahir dan batin) dengan air yang baru.','Membasuh tiga kali, mendahulukan kanan, menggosok anggota dan berturut-turut (muwalat).','Melebihkan basuhan, bersederhana menggunakan air dan tidak bercakap-cakap.'])+`<h3>Makruh</h3><p>Berlebih-lebihan memasukkan air ke hidung atau berkumur ketika berpuasa kerana bimbang air sampai ke halkum.</p>
+<h3>Perkara Membatalkan Wuduk (5)</h3>`+L(['Keluar sesuatu daripada qubul atau dubur.','Hilang akal (tidur tidak tetap punggung, pitam, mabuk, gila).','Bersentuhan kulit lelaki dan perempuan ajnabi (bukan mahram).','Menyentuh kemaluan dengan tapak tangan.','Tidur sambil duduk dengan punggung tetap tidak membatalkan wuduk.']),
+q:`Berapakah bilangan fardhu wuduk?|4|5|6|8|2
+Di manakah tempat niat?|Lidah|Hati|Tangan|Telinga|1
+Bilakah niat wuduk dilakukan?|Sebelum azan|Ketika membasuh bahagian pertama muka|Ketika menyapu kepala|Ketika membasuh kaki|1
+Kadar minimum sapuan kepala?|Seperempat|Separuh|Sehelai rambut|Keseluruhan|2
+Lebar muka bermula dari?|Telinga ke telinga|Pipi ke pipi|Kening ke kening|Dahi ke dagu|0
+Yang BUKAN fardhu wuduk?|Tertib|Berkumur|Niat|Membasuh muka|1
+Berapakah pembatal wuduk?|3|4|5|7|2
+Tidur yang tidak membatalkan wuduk?|Berbaring|Duduk dengan punggung tetap|Meniarap|Pengsan|1
+Air untuk menyapu telinga mestilah?|Air sapuan kepala|Air yang baru|Air kotor|Tanpa air|1
+Bilangan basuhan yang sunat?|1|2|3|5|2`},
+{id:'tayamum',h:`<h3>Takrif</h3><p>Menyampaikan tanah yang suci ke muka dan kedua tangan dengan niat dan cara tertentu, sebagai ganti wuduk atau mandi.</p>
+<h3>Sebab Tayamum</h3>`+L(['Ketiadaan air (termasuk air hanya cukup untuk diminum).','Air terlalu jauh (lebih daripada kira-kira 2½ km).','Sakit atau luka yang bimbang jika terkena air.','Cuaca terlalu sejuk. Solat itu wajib diqada apabila ada air.'])+`<h3>Syarat (5)</h3>`+N(['Mengetahui masuk waktu.','Mencari air selepas masuk waktu.','Tanah berdebu yang suci, tidak bercampur tepung atau simen.','Menghilangkan najis terlebih dahulu.','Berijtihad menentukan kiblat sebelum bertayamum.'])+`<h3>Rukun</h3>`+N(['Niat dalam hati (sunat dilafazkan).','Menyapu muka dan kedua tangan hingga siku dengan dua tepukan.','Tertib.'])+`<h3>Sunat</h3><p>Semua sunat wuduk seperti bismillah turut disunatkan dalam tayamum.</p><h3>Nota Penting</h3>`+L(['Satu tayamum untuk satu solat fardu sahaja, tetapi boleh digunakan bersama solat-solat sunat.','Tayamum juga boleh menjadi ganti mandi wajib.','Tayamum batal dengan perkara yang membatalkan wuduk dan apabila ada air sebelum solat (jika sebabnya ketiadaan air).']),
+q:`Tayamum adalah ganti kepada?|Solat|Wuduk atau mandi|Puasa|Haji|1
+Tayamum dilakukan dengan?|Air sejuk|Tanah suci berdebu|Pasir basah|Batu licin|1
+Tanah tayamum tidak boleh bercampur dengan?|Debu|Tepung atau simen|Pasir halus|Tanah liat|1
+Berapakah syarat tayamum?|3|5|7|2|1
+Rukun tayamum ialah niat, sapuan dan?|Tertib|Berkumur|Bersugi|Tasyahhud|0
+Air jauh melebihi kira-kira?|100 meter|2½ km|10 km|50 km|1
+Mencari air dilakukan selepas?|Masuk waktu|Sebelum waktu|Bila-bila masa|Selepas solat|0
+Solat ketika cuaca terlalu sejuk dengan tayamum?|Wajib diqada bila ada air|Tidak perlu apa-apa|Haram|Batal puasa|0
+Yang BUKAN sebab tayamum?|Sakit|Air hanya cukup untuk minum|Malas berwuduk|Tiada air|2
+Anggota yang disapu ialah?|Muka dan tangan hingga siku|Muka dan kepala|Tangan dan kaki|Muka sahaja|0`},
+{id:'solat-fardu',t:'3. Solat Fardu',h:`<h3>Takrif</h3><p>Ibadah yang bermula dengan takbiratul ihram dan berakhir dengan salam.</p>
+<h3>Syarat Sah (4)</h3><p>Bersuci, mengetahui masuk waktu, menutup aurat dan menghadap kiblat.</p>
+<h3>Rukun Solat (13)</h3>`+N(['Niat (serentak dengan takbiratul ihram)','Berdiri bagi yang mampu (solat fardu)','Takbiratul ihram','Membaca Fatihah','Rukuk','I\'tidal selepas rukuk','Sujud dua kali setiap rakaat','Duduk antara dua sujud','Duduk akhir','Membaca tasyahhud akhir','Selawat ke atas Nabi selepas tasyahhud akhir','Salam pertama','Tertib'])+`<p>Jika tidak mampu berdiri, solat dalam keadaan duduk; jika tidak mampu, mengiring.</p>
+<h3>Sunat Ab'adh</h3><p>Tasyahhud awal, duduk untuk tasyahhud awal, selawat ke atas Nabi selepas tasyahhud awal, dan qunut. Membaca surah selepas Fatihah ialah sunat hai'at.</p>
+<h3>Perkara yang Membatalkan Solat</h3><p>Berhadas, terbuka aurat, bercakap dengan sengaja, banyak bergerak berturut-turut, makan atau minum, dan berpaling dari kiblat.</p>`,
+q:`Berapakah rukun solat?|10|13|15|18|1
+Yang BUKAN syarat sah solat?|Menutup aurat|Menghadap kiblat|Berjemaah|Bersuci|2
+Rukun solat yang pertama ialah?|Takbiratul ihram|Niat|Berdiri|Fatihah|1
+Niat solat mesti serentak dengan?|Salam|Rukuk|Takbiratul ihram|Iqamah|2
+Rukun ke-13 solat ialah?|Tertib|Salam|Sujud|Selawat|0
+Bilangan sujud setiap rakaat?|1|2|3|4|1
+Tasyahhud awal termasuk?|Rukun|Sunat ab'adh|Syarat|Makruh|1
+Bilangan rakaat Maghrib?|2|3|4|5|1
+Selawat rukun dibaca selepas?|Tasyahhud akhir|Fatihah|Sujud|Takbir|0
+Jika tidak mampu berdiri dalam solat fardu?|Tinggalkan solat|Duduk, jika tidak mampu mengiring|Tangguh|Gugur kewajipan|1`},
+{id:'solat-sunat',t:'4. Solat Sunat',h:`<h3>Takrif &amp; Bahagian</h3><p>Nafl bermaksud tambahan, sama maksud dengan sunat. Dituntut tetapi tidak berdosa jika ditinggalkan. Terbahagi kepada yang tidak disunatkan berjemaah dan yang disunatkan berjemaah (solat Hari Raya, gerhana, istisqa' dan tarawih).</p>
+<h3>Rawatib Muakkad (10 rakaat)</h3>`+L(['2 rakaat sebelum Subuh (paling muakkad)','2 rakaat sebelum Zohor dan 2 rakaat selepasnya','2 rakaat selepas Maghrib','2 rakaat selepas Isyak'])+`<h3>Rawatib Tidak Muakkad</h3><p>2 rakaat tambahan sebelum dan selepas Zohor, 4 rakaat sebelum Asar (salam setiap 2 rakaat), serta 2 rakaat ringan sebelum Maghrib dan sebelum Isyak.</p>
+<h3>Solat Sunat Berwaktu dan Bernama</h3>`+L(['<b>Tahiyyatul masjid:</b> 2 rakaat sebelum duduk apabila masuk masjid. Ia terhasil juga dengan solat fardu atau solat sunat lain.','<b>Witir:</b> sunat muakkad, waktunya antara Isyak dan fajar. Sekurang-kurangnya 1 rakaat, paling sempurna 11 rakaat (salam setiap 2 rakaat dan akhirnya 1 rakaat).','<b>Qiamullail/Tahajjud:</b> dinamakan tahajjud jika dilakukan selepas tidur.','<b>Dhuha:</b> sekurang-kurangnya 2 rakaat, paling banyak dan sempurna 8 rakaat. Waktunya dari naik matahari hingga gelincir.','<b>Istikharah:</b> 2 rakaat bagi memohon petunjuk dalam sesuatu urusan, bukan pada waktu yang dilarang.'])+`<h3>Sunat Mutlak</h3><p>Solat sunat tanpa nama dan waktu tertentu, selain waktu yang dilarang, dengan salam pada setiap 2 rakaat.</p>`,
+q:`Berapakah rakaat rawatib muakkad?|6|8|10|12|2
+Sunat yang paling muakkad ialah?|2 rakaat selepas Isyak|4 rakaat sebelum Asar|2 rakaat sebelum Subuh|2 rakaat sebelum Maghrib|2
+Yang termasuk rawatib tidak muakkad?|2 rakaat sebelum Subuh|4 rakaat sebelum Asar|2 rakaat selepas Maghrib|2 rakaat selepas Isyak|1
+Tahiyyatul masjid berapa rakaat?|1|2|4|8|1
+Bilangan witir yang paling sedikit?|1|2|3|5|0
+Witir paling sempurna ialah?|5|7|9|11|3
+Dhuha paling sempurna ialah?|2|4|8|12|2
+Dinamakan tahajjud jika dilakukan?|Selepas tidur|Sebelum Isyak|Selepas Zohor|Waktu Dhuha|0
+Solat sunat yang disunatkan berjemaah?|Rawatib|Dhuha|Solat Hari Raya|Tahajjud|2
+Solat istikharah ialah?|2 rakaat memohon petunjuk|4 rakaat sebelum tidur|Solat fardu|Solat jenazah|0`},
+{id:'puasa',t:'5. Puasa',h:`<h3>Takrif</h3><p>Menahan diri daripada perkara yang membatalkan puasa dari terbit fajar sadiq hingga terbenam matahari, dengan niat.</p>
+<h3>Syarat Wajib</h3><p>Islam, baligh, berakal dan mampu berpuasa.</p>
+<h3>Rukun (4)</h3>`+N(['Niat sebelum fajar setiap hari (puasa fardu).','Menahan diri daripada makan dan minum.','Menahan diri daripada jimak.','Menahan diri daripada muntah dengan sengaja.'])+`<h3>Pembahagian</h3>`+L(['<b>Wajib:</b> Ramadan, qada, kaffarah dan nazar.','<b>Sunat:</b> Isnin dan Khamis, enam hari Syawal, Arafah (9 Zulhijjah) dan Asyura (10 Muharram).','<b>Haram:</b> berpuasa pada hari raya.'])+`<p>Orang yang berbuka kerana uzur (musafir atau sakit) wajib menqada.</p>`,
+q:`Berapakah rukun puasa dalam kitab ini?|2|3|4|6|2
+Bilakah niat puasa fardu?|Sebelum fajar|Selepas subuh|Tengah hari|Bila-bila masa|0
+Waktu berpuasa ialah?|Subuh hingga zohor|Imsak hingga isyak|Fajar sadiq hingga terbenam matahari|Tengah malam hingga subuh|2
+Yang membatalkan puasa?|Berkumur|Muntah dengan sengaja|Bersugi|Mandi|1
+Puasa Arafah pada?|10 Muharram|15 Syaaban|9 Zulhijjah|1 Syawal|2
+Puasa Asyura pada?|10 Muharram|9 Zulhijjah|1 Rejab|15 Syaaban|0
+Yang BUKAN syarat wajib puasa?|Islam|Baligh|Kaya|Berakal|2
+Puasa pada hari raya hukumnya?|Sunat|Wajib|Makruh|Haram|3
+Musafir yang berbuka wajib?|Kaffarah|Qada|Tiada apa|Fidyah sahaja|1
+Puasa sunat enam hari pada bulan?|Rejab|Zulhijjah|Syawal|Muharram|2`},
+{id:'zakat',t:'6. Zakat',h:`<h3>Takrif</h3><p>Kadar harta tertentu yang dikeluarkan kepada golongan yang berhak apabila cukup syarat.</p>
+<h3>Harta Wajib Zakat (5)</h3><p>Binatang ternak (unta, lembu, kambing), barang berharga (emas dan perak), hasil pertanian, buah-buahan dan barang dagangan.</p>
+<h3>Syarat Wajib Zakat Ternakan (6)</h3><p>Islam, merdeka, milik sempurna, cukup nisab, cukup haul (setahun qamariah) dan digembalakan di rumput yang harus.</p>
+<h3>Nisab &amp; Kadar</h3>`+L(['<b>Nisab</b> ialah kadar tertentu harta yang mewajibkan zakat.','<b>Emas:</b> nisab 20 mitsqal (20 dinar), zakat 2.5%.','<b>Perak:</b> nisab 200 dirham, zakat 2.5% (5 dirham).','<b>Pertanian dan buah-buahan:</b> nisab 5 wasaq. Zakat 10% jika diairi hujan, 5% jika diairi dengan kos atau usaha (contoh: kincir).','<b>Barang dagangan:</b> dikira pada akhir tahun dengan harga modal, zakat 2.5% jika cukup nisab.','<b>Hasil lombong emas/perak:</b> 2.5% serta-merta. <b>Rikaz</b> (harta karun): 20%.'])+`<h3>Zakat Fitrah (3 syarat)</h3>`+N(['Islam.','Dikeluarkan sejak terbenam matahari pada hari terakhir Ramadan.','Ada lebihan makanan asasi untuk diri dan keluarga pada hari itu.'])+`<h3>Asnaf (8)</h3><p>Fakir, miskin, amil, muallaf, riqab, gharimin, fisabilillah dan ibnu sabil. Zakat tidak boleh diberikan kepada orang yang wajib dinafkahi oleh pembayar zakat jika mereka bukan fakir atau miskin.</p>`,
+q:`Berapakah jenis harta wajib zakat?|3|5|7|9|1
+Berapakah golongan asnaf?|6|7|8|10|2
+Haul bermaksud?|Sepuluh tahun|Enam bulan|Sebulan|Setahun qamariah|3
+Kadar zakat emas dan perak?|5%|10%|2.5%|20%|2
+Nisab perak ialah?|100 dirham|200 dirham|500 dirham|1000 dirham|1
+Nisab hasil pertanian ialah?|3 wasaq|10 wasaq|20 wasaq|5 wasaq|3
+Zakat tanaman diairi hujan?|5%|10%|2.5%|20%|1
+Zakat tanaman diairi dengan kincir?|10%|2.5%|5%|20%|2
+Zakat rikaz (harta karun)?|2.5%|5%|20%|10%|2
+Zakat fitrah dikeluarkan sejak?|Awal Ramadan|Terbenam matahari akhir Ramadan|Pagi raya|Zulhijjah|1`},
+{id:'haji-umrah',t:'7. Haji &amp; Umrah',h:`<h3>Syarat Wajib Haji (7)</h3><p>Islam, baligh, berakal, merdeka, memiliki bekal dan kenderaan, jalan yang aman dan mampu bermusafir.</p>
+<h3>Rukun Haji (5)</h3>`+N(['Ihram disertai niat.','Wukuf di Arafah.','Tawaf di Baitullah.','Sa\'i antara Safa dan Marwah.','Bercukur (halq) atau menggunting rambut.'])+`<p>Menggunting rambut lebih baik bagi perempuan.</p><h3>Rukun Umrah (4)</h3><p>Sama seperti haji kecuali wukuf di Arafah: ihram, tawaf, sa'i dan bercukur atau menggunting.</p>`,
+q:`Berapakah rukun haji?|4|5|6|8|1
+Berapakah syarat wajib haji?|5|6|7|9|2
+Yang BUKAN rukun haji?|Wukuf|Tawaf|Melontar jamrah|Sa'i|2
+Berapakah rukun umrah?|3|4|5|6|1
+Rukun haji yang tiada dalam umrah?|Tawaf|Sa'i|Halq|Wukuf|3
+Sa'i dilakukan antara?|Mina dan Arafah|Safa dan Marwah|Muzdalifah|Jamrah|1
+Wukuf dilakukan di?|Mina|Makkah|Arafah|Muzdalifah|2
+Tawaf dilakukan di?|Baitullah|Arafah|Mina|Marwah|0
+Selain bercukur, boleh juga?|Mencabut rambut|Menggunting rambut|Memotong kuku|Tiada|1
+Antara syarat wajib haji?|Bekal dan kenderaan|Berkahwin|Berusia 40 tahun|Kaya raya sahaja|0`}];
+(()=>{const g=k=>C.find(x=>x.id==k),W=g('wuduk'),T=g('tayamum'),M=g('mandi');
+W.h='<div class="bs">💧 Wuduk</div>'+W.h+'<div class="bs">🏜️ Tayamum</div>'+T.h+'<div class="bs">🚿 Mandi Wajib</div>'+M.h;
+W.qs=[['Wuduk',W.q],['Tayamum',T.q],['Mandi Wajib',M.q]];C.splice(C.indexOf(T),1);C.splice(C.indexOf(M),1)})();
+nav.innerHTML=C.map(c=>`<a href="#${c.id}">${(c.n||c.t.replace(/^\d+\. /,''))}</a>`).join('')+'<a href="#infaq">Infaq</a><a href="#cadangan">Cadangan</a>';
+const E={taharah:['🧼','#0e7490','#2d6a4f'],wuduk:['💧','#0f766e','#2d6a4f'],tayamum:['🏜️','#b7791f','#7c5a1a'],'solat-fardu':['🕌','#1b4332','#2d6a4f'],'solat-sunat':['🌙','#1e3a5f','#2d6a4f'],puasa:['🌅','#9a3412','#1b4332'],zakat:['💰','#166534','#a16207'],'haji-umrah':['🕋','#111827','#1b4332']};
+const B=(k)=>{const[e,a,b]=E[k];return`<div class="ban"><svg viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g${k}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="600" height="150" fill="url(#g${k})"/><g fill="none" stroke="#d4af37" stroke-opacity=".35" stroke-width="2"><circle cx="90" cy="75" r="60"/><circle cx="90" cy="75" r="40"/><circle cx="510" cy="75" r="60"/><circle cx="510" cy="75" r="40"/></g><text x="300" y="100" font-size="72" text-anchor="middle">${e}</text></svg></div>`};
+const M=[[/takrif|makna/i,'📖'],[/najis/i,'🧼'],[/istinjak/i,'🚿'],[/hadas/i,'🌀'],[/jenis air/i,'💧'],[/nota/i,'📝'],[/syarat/i,'📋'],[/rukun|fardhu/i,'🧱'],[/batal/i,'❌'],[/makruh/i,'⚠️'],[/sebab/i,'💡'],[/rawatib/i,'🕌'],[/mutlak/i,'🔁'],[/berwaktu|bahagian|pembahagian/i,'🗂️'],[/nisab|kadar/i,'⚖️'],[/fitrah/i,'🌾'],[/asnaf/i,'🤝'],[/harta/i,'💎'],[/sunat/i,'⭐']];
+const H=(h)=>h.replace(/<h3>(.*?)<\/h3>/g,(m,t)=>'<h3><span class="e">'+((M.find(x=>x[0].test(t))||[0,'📌'])[1])+'</span>'+t+'</h3>');
+let cur='',ci=0,Q=[];
+function openQ(k,i=0){cur=k;ci=i;const c=C.find(x=>x.id==k),z=c.qs?c.qs[i]:['',c.q];Q=z[1].split('\n').map(s=>s.split('|'));qt.innerText='Kuiz: '+(z[0]||c.t.replace(/&amp;/g,'&'));
+qb.innerHTML=Q.map((x,i)=>`<div class="q"><b>${i+1}. ${x[0]}</b>`+x.slice(1,5).map((o,j)=>`<label class="o"><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join('')+'</div>').join('');
+qr.innerHTML='';qs.style.display='block';qm.style.display='flex';qm.querySelector('.mc').scrollTop=0}
+function sub(){let s=0;Q.forEach((x,i)=>{const a=+x[5],p=document.querySelector(`input[name=q${i}]:checked`);document.getElementsByName('q'+i).forEach(r=>{const l=r.parentNode;if(+r.value==a)l.classList.add('ok');else if(r.checked)l.classList.add('no');r.disabled=true});if(p&&+p.value==a)s++});
+qr.innerHTML=`Markah anda: ${s}/${Q.length} (${Math.round(s/Q.length*100)}%)`;qs.style.display='none'}
+
+const yid=s=>{s=(s||'').trim();const m=s.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);return m?m[1]:s};
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+const AUL=(typeof AU!=='undefined'?AU:[]).map(x=>[x[0],x[1],yid(x[2])]).filter(x=>x[2]);
+const AI=x=>'<div class="au"><b>'+esc(x[1])+'</b><button class="btn yp" data-id="'+x[2]+'">▶ Mainkan</button><a class=\"btn\" style=\"background:var(--a);color:#1b1b1b\" href=\"https://music.youtube.com/watch?v='+x[2]+'\" target=\"_blank\" rel=\"noopener\">🎧 Dengar di YouTube Music</a></div>';
+const Y=k=>{const l=AUL.filter(x=>x[0]==k);return l.length?'<div class="aus"><h3><span class="e">🎧</span>Kuliah Audio ('+l.length+')</h3>'+l.map(AI).join('')+'</div>':''};
+main.innerHTML=C.map(c=>`<section id="${c.id}"><h2>${c.t}</h2>${B(c.id)}${Y(c.id)}${H(c.h)}${(c.qs||[['',c.q]]).map((z,i)=>`<button class="btn" onclick="openQ('${c.id}',${i})">Jawab Kuiz ${z[0]} (${z[1].split('\n').length} soalan)</button>`).join('')}</section>`).join('');
+const CI=C.map(c=>c.id),RS=AUL.filter(x=>!CI.includes(x[0]));
+main.innerHTML+='<section id="kuliah"><h2>🎧 Kuliah Audio</h2><p>Bacaan Buku Fiqh Islam Mazhab Syafie (Syarah Matan Abu Syuja&#39;) oleh Penuntut Ilmu Kecil. Kuliah mengikut bab ada dalam setiap bab di atas.</p><a class="btn" href="https://www.youtube.com/playlist?list=PLtDejgme0P1dH1gsWUfg8Va6-SIfV7WPm" target="_blank" rel="noopener">▶ Buka semua di YouTube</a>'+RS.map(AI).join('')+'<p><small>Perlukan sambungan internet. Audio berhenti jika skrin dikunci.</small></p></section>';nav.innerHTML=nav.innerHTML.replace('<a href="#infaq">','<a href="#kuliah">Kuliah</a><a href="#infaq">');
+document.addEventListener('click',e=>{const b=e.target.closest('.yp');if(!b)return;document.querySelectorAll('.au iframe').forEach(f=>{f.parentNode.querySelector('.yp').style.display='';f.remove()});const f=document.createElement('iframe');f.src='https://www.youtube.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=b.parentNode.querySelector('b').textContent;b.style.display='none';b.parentNode.querySelector('b').after(f)});
+cf.onsubmit=e=>{e.preventDefault();const u='https://wa.me/60128255341?text='+encodeURIComponent('Assalamualaikum, saya '+nama.value.trim()+'.\n\nCadangan penambahbaikan Belajar Fekah:\n'+mesej.value.trim());location.href=u};
+let dp;addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;inst.style.display='block'});
+inst.onclick=async()=>{if(dp){dp.prompt();await dp.userChoice;dp=null;inst.style.display='none'}};
+addEventListener('appinstalled',()=>{inst.style.display='none'});
+if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!navigator.standalone)ios.style.display='block';
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+</script></body></html>

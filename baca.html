@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Baca · Penuntut Ilmu Kecil</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#1F6B5A">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Ilmu Kecil">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600;7..72,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="reader">
+<header class="rbar">
+  <a class="back" href="bacaan.html">&larr; Kembali</a>
+  <strong id="ttl">Memuatkan…</strong>
+  <span id="pg" class="pgno"></span>
+  <button id="zo" type="button" aria-label="Kecilkan">&minus;</button>
+  <button id="zi" type="button" aria-label="Besarkan">+</button>
+</header>
+<main id="pages" aria-live="polite"></main>
+<p class="note rmsg" id="msg" hidden></p>
+<p class="note rmsg" id="dlp" hidden><a id="dl" href="#" download>Muat turun PDF</a></p>
+<script type="module">
+import * as pdfjsLib from './pdfjs/pdf.min.js';
+pdfjsLib.GlobalWorkerOptions.workerSrc='./pdfjs/pdf.worker.min.js';
+const DOCS={
+  'tatacara-solat':{t:'Tatacara Solat',u:'pdf/tatacara-solat.pdf'},
+  'tatacara-wuduk-tayammum':{t:'Tatacara Wuduk dan Tayammum',u:'pdf/tatacara-wuduk-tayammum.pdf'}
+};
+const $=id=>document.getElementById(id);
+const d=DOCS[new URLSearchParams(location.search).get('f')];
+const wrap=$('pages'),msg=$('msg');
+const fail=t=>{msg.hidden=false;msg.textContent=t;};
+if(!d){$('ttl').textContent='Tidak ditemui';fail('Kitab ini tidak ditemui. Sila kembali ke Sudut bacaan.');}
+else run();
+async function run(){
+  $('ttl').textContent=d.t;document.title=d.t+' · Penuntut Ilmu Kecil';
+  $('dl').href=d.u;
+  let pdf;
+  try{pdf=await pdfjsLib.getDocument({url:d.u,disableRange:true,disableStream:true}).promise;}
+  catch(e){fail('Kitab tidak dapat dimuatkan. Cuba muat semula halaman ini.');$('dlp').hidden=false;return;}
+  const n=pdf.numPages;
+  const v0=(await pdf.getPage(1)).getViewport({scale:1});
+  const ratio=v0.height/v0.width;
+  let zoom=1,gen=0;
+  const pgs=[];
+  const width=()=>Math.max(260,Math.min(wrap.clientWidth-16,900))*zoom;
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)draw(e.target);}),{rootMargin:'800px 0px'});
+  function layout(){
+    gen++;const w=width();
+    pgs.forEach(el=>{el.style.width=w+'px';el.style.height=Math.round(w*ratio)+'px';el.textContent='';el.dataset.done='';el.dataset.busy='';io.unobserve(el);io.observe(el);});
+  }
+  async function draw(el){
+    if(el.dataset.done==='1'||el.dataset.busy===String(gen))return;
+    const g=gen;el.dataset.busy=String(g);
+    const page=await pdf.getPage(+el.dataset.n);
+    if(g!==gen)return;
+    const w=width(),vp=page.getViewport({scale:w/page.getViewport({scale:1}).width});
+    const dpr=Math.min(window.devicePixelRatio||1,2);
+    const cv=document.createElement('canvas');
+    cv.width=Math.floor(vp.width*dpr);cv.height=Math.floor(vp.height*dpr);
+    cv.style.width=vp.width+'px';cv.style.height=vp.height+'px';
+    cv.setAttribute('role','img');cv.setAttribute('aria-label','Halaman '+el.dataset.n);
+    await page.render({canvas:cv,canvasContext:cv.getContext('2d'),viewport:vp,transform:dpr!==1?[dpr,0,0,dpr,0,0]:null}).promise;
+    if(g!==gen)return;
+    el.textContent='';el.style.height=vp.height+'px';el.appendChild(cv);el.dataset.done='1';
+  }
+  for(let i=1;i<=n;i++){const el=document.createElement('div');el.className='pg';el.dataset.n=i;wrap.appendChild(el);pgs.push(el);}
+  layout();$('dlp').hidden=false;
+  const pg=$('pg');
+  const upd=()=>{let cur=1;const mid=innerHeight*.4;for(const el of pgs){if(el.getBoundingClientRect().bottom>mid){cur=+el.dataset.n;break;}}pg.textContent=cur+' / '+n;};
+  addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});upd();
+  $('zi').onclick=()=>{zoom=Math.min(2.5,zoom+.25);layout();};
+  $('zo').onclick=()=>{zoom=Math.max(.75,zoom-.25);layout();};
+  let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(layout,250);});
+}
+if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));}
+</script>
+</body>
+</html>
