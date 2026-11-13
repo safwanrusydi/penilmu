@@ -30,6 +30,12 @@ ol.toc li{margin:4px 0}
 .b.sahih{color:var(--sah)}.b.hasan{color:var(--has)}.b.daif{color:var(--dai)}
 .up{font-size:.85rem}
 .note{font-size:.85rem;color:var(--mut)}
+.share{margin-top:16px;border:1px solid var(--bd);border-radius:12px;padding:12px;background:var(--bg)}
+.sht{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ac);font-weight:700;margin-bottom:8px}
+.shb{display:flex;flex-wrap:wrap;gap:8px}
+.sb{min-height:44px;padding:0 14px;border:1px solid var(--bd);border-radius:10px;background:var(--card);color:var(--tx);font:inherit;font-size:.9rem;cursor:pointer}
+.sb:active{opacity:.7}.sb.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff;font-weight:700}
+.shh{margin-top:8px;font-size:.8rem;color:var(--mut);line-height:1.5}
 footer{text-align:center;color:var(--mut);font-size:.85rem;padding:16px 0 32px}
 </style>
 </head>
@@ -152,6 +158,49 @@ var T=[
 ["Allahu akbar (ketika mendaki).<br>Subhanallah (ketika menurun).","Allah Maha Besar.<br>Maha Suci Allah."],
 ["Allahumma inna nas’aluka fi safarina hadzal-birra wat-taqwa, wa minal-’amali ma tardha. Allahumma hawwin ’alaina safarana hadza wathwi ’anna bu’dah. Allahumma antash-shahibu fis-safar, wal-khalifatu fil-ahl. Allahumma inni a’udzu bika min wa’tsa’is-safar, wa ka’abatil-manzhar, wa su’il-munqalabi fil-mali wal-ahl.","Ya Allah, kami memohon kepada-Mu dalam perjalanan kami ini kebaikan dan ketakwaan, dan amalan yang Engkau redai. Ya Allah, mudahkanlah perjalanan kami ini dan dekatkanlah jaraknya. Ya Allah, Engkaulah teman dalam perjalanan dan pengganti dalam menjaga keluarga. Ya Allah, aku berlindung kepada-Mu daripada kesukaran perjalanan, pemandangan yang menyedihkan, dan kepulangan yang buruk pada harta dan keluarga."]]
 ];
+var SH=[];
+function shDec(s){var d=document.createElement('textarea');d.innerHTML=s.replace(/<[^>]+>/g,'');return d.value}
+function shText(h){
+  var s=h.replace(/<sup[^>]*>([\s\S]*?)<\/sup>/g,'[$1]');
+  s=s.replace(/<ol([^>]*)>([\s\S]*?)<\/ol>/g,function(m,a,inner){var n=0;return '\n'+inner.replace(/<li>/g,function(){n++;return '\n'+n+'. '})+'\n'});
+  s=s.replace(/<li>/g,'\n\u2022 ');
+  s=s.replace(/<(h3|div class="bs")>([\s\S]*?)<\/(?:h3|div)>/g,'\n\n*$2*\n');
+  s=s.replace(/<br\s*\/?>/g,'\n').replace(/<\/(p|div|ol|ul|table|section)>/g,'\n\n');
+  s=shDec(s);
+  return s.replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim()}
+function shMsg(o,body){return '\uD83D\uDCD6 *'+o.brand+'*\n*'+o.head+'*\n\n'+body+'\n\n\u2501\u2501\u2501\u2501\u2501\u2501\n\uD83D\uDCF2 '+o.foot+'\n'+o.link}
+function shFit(o,max){
+  var body=o.body(),m=shMsg(o,body);if(encodeURIComponent(m).length<=max)return m;
+  var ps=body.split('\n\n'),out=[],tail='\n\n\u2026 (bersambung, baca bab penuh di pautan)';
+  for(var i=0;i<ps.length;i++){var t=out.concat([ps[i]]).join('\n\n')+tail;if(encodeURIComponent(shMsg(o,t)).length>max)break;out.push(ps[i])}
+  if(!out.length){var c=body;while(c.length>50&&encodeURIComponent(shMsg(o,c+tail)).length>max)c=c.slice(0,Math.floor(c.length*.8));return shMsg(o,c+tail)}
+  return shMsg(o,out.join('\n\n')+tail)}
+function shBox(o){var i=SH.push(o)-1,a=' data-i="'+i+'"';
+  return '<div class="share"><div class="sht">Kongsi bab ini</div><div class="shb">'
+   +(navigator.share?'<button class="sb" data-sh="n"'+a+'>Kongsi\u2026</button>':'')
+   +'<button class="sb wa" data-sh="wa"'+a+'>WhatsApp</button>'
+   +'<button class="sb" data-sh="tg"'+a+'>Telegram</button>'
+   +'<button class="sb" data-sh="fb"'+a+'>Facebook</button>'
+   +'<button class="sb" data-sh="x"'+a+'>X</button>'
+   +'<button class="sb" data-sh="c"'+a+'>Salin teks</button></div>'
+   +'<div class="shh">Isi bab disertakan bersama pautan. Facebook dan X hanya menerima pautan.</div></div>'}
+document.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-sh]');if(!b)return;
+  var o=SH[+b.getAttribute('data-i')],k=b.getAttribute('data-sh'),en=encodeURIComponent;
+  function go(u){if(!window.open(u,'_blank','noopener'))location.href=u}
+  if(k==='wa')go('https://wa.me/?text='+en(shFit(o,9000)));
+  else if(k==='tg')go('https://t.me/share/url?url='+en(o.link)+'&text='+en(shFit(o,7000).split('\n\n\u2501')[0]));
+  else if(k==='fb')go('https://www.facebook.com/sharer/sharer.php?u='+en(o.link));
+  else if(k==='x')go('https://twitter.com/intent/tweet?text='+en(o.head+' \u2014 '+o.brand)+'&url='+en(o.link));
+  else if(k==='n'){navigator.share({title:o.brand,text:shMsg(o,o.body())}).catch(function(){})}
+  else if(k==='c'){var t=shMsg(o,o.body());
+    var ok=function(){b.textContent='Disalin \u2713';setTimeout(function(){b.textContent='Salin teks'},1800)};
+    var fb=function(){var a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(a)};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,fb);else fb()}
+});
+var AZU='https://safwanrusydi.github.io/penilmu/azkar/';
+function azb(i){return function(){var c=D[i];return c[1].map(function(t,j){var g=G[t[3]],x=(T[i]&&T[i][j])||['',''],br=function(z){return shDec(z.replace(/<br\s*\/?>/g,'\n'))};
+ return (j+1)+'. '+br(t[0])+'\n\n'+br(t[1])+(x[0]?'\n\nBacaan: '+br(x[0]):'')+(x[1]?'\n\nMaksud: '+br(x[1]):'')+'\n\n['+g[1]+'] '+br(t[2])}).join('\n\n')}}
 var toc=document.getElementById("toc"),out=document.getElementById("bab");
 toc.innerHTML='<li><a href="#muqaddimah">Muqaddimah Al-Azkar</a></li><li><a href="#hukum-hadis-daif">Hukum Beramal dengan Hadis Daif</a></li>';
 D.forEach(function(c,i){
@@ -162,6 +211,7 @@ D.forEach(function(c,i){
   var g=G[t[3]],x=(T[i]&&T[i][j])||["",""];
   h+='<div class="item"><p>'+t[0]+'</p><div class="ar">'+t[1]+'</div><div class="tr">'+x[0]+'</div><div class="ms"><b>Maksud:</b> '+x[1]+'</div><div class="ref"><span class="b '+g[0]+'">'+g[1]+'</span>'+t[2]+'</div></div>';
  });
+ h+=shBox({brand:'Al-Azkar Imam Nawawi',head:'Bab '+(i+1)+': '+c[0],link:AZU+'#'+id,foot:'Baca semua zikir harian dan kongsikan supaya lebih ramai mendapat manfaat:',body:azb(i)});
  h+='<a class="up" href="#isi-kandungan">↑ Isi kandungan</a></section>';
  out.innerHTML+=h;
 });

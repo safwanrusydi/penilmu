@@ -34,6 +34,13 @@ h3 .e{display:inline-block;width:1.7em;height:1.7em;line-height:1.7em;text-align
 #inst{display:none;margin:.9rem auto 0;width:auto;background:var(--a);color:#1b1b1b;padding:.55rem 1.1rem}#ios{display:none;font-size:.82rem;margin-top:.6rem;opacity:.95}
 .au{background:#f0f4f1;border-radius:10px;padding:.8rem;margin:0 0 1rem}.au b{display:block;font-size:.95rem;margin-bottom:.3rem}.au audio{width:100%}.au small{opacity:.7}.au iframe{display:block;width:100%;height:200px;border:0;border-radius:10px;margin:.5rem 0}.au .btn{margin:.2rem .4rem 0 0}.aus{margin:0 0 1rem}
 .bs{background:var(--p);color:#fff;padding:.5rem .9rem;border-radius:8px;margin:1.6rem 0 .4rem;font-weight:bold;font-size:1.05rem}
+.share{margin:1rem 0 .2rem;background:#f0f4f1;border-radius:10px;padding:.9rem}
+.sht{font-weight:bold;color:var(--p);font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.55rem}
+.shb{display:flex;flex-wrap:wrap;gap:8px}
+.sb{min-height:44px;padding:0 14px;border:1px solid #cfd8d2;border-radius:8px;background:#fff;color:var(--t);font:inherit;font-size:.92rem;cursor:pointer}
+.sb:active{opacity:.7}.sb.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff;font-weight:bold}
+.shh{margin-top:.5rem;font-size:.8rem;opacity:.75;line-height:1.5}
+section{scroll-margin-top:56px}
 footer{background:var(--p);color:#fff;text-align:center;padding:1.5rem 1rem;margin-top:2rem;border-top:4px solid var(--a);font-size:.9rem}
 </style></head><body>
 <header><div class="hd"><img class="lg" src="logo.png" alt="Logo Penuntut Ilmu Kecil"><div><h1>Belajar Fekah Mazhab Syafie</h1><p>Ringkasan Fiqh al-Manhaji oleh Penuntut Ilmu Kecil</p></div></div><a class="btn" href="../" style="text-decoration:none;display:inline-block">← Laman Utama</a> <button class="btn" id="inst">📲 Pasang Aplikasi</button><p id="ios">Pada iPhone: tekan butang Kongsi, kemudian "Tambah ke Skrin Utama".</p></header>
@@ -187,6 +194,48 @@ const E={taharah:['🧼','#0e7490','#2d6a4f'],wuduk:['💧','#0f766e','#2d6a4f']
 const B=(k)=>{const[e,a,b]=E[k];return`<div class="ban"><svg viewBox="0 0 600 150" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="g${k}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="600" height="150" fill="url(#g${k})"/><g fill="none" stroke="#d4af37" stroke-opacity=".35" stroke-width="2"><circle cx="90" cy="75" r="60"/><circle cx="90" cy="75" r="40"/><circle cx="510" cy="75" r="60"/><circle cx="510" cy="75" r="40"/></g><text x="300" y="100" font-size="72" text-anchor="middle">${e}</text></svg></div>`};
 const M=[[/takrif|makna/i,'📖'],[/najis/i,'🧼'],[/istinjak/i,'🚿'],[/hadas/i,'🌀'],[/jenis air/i,'💧'],[/nota/i,'📝'],[/syarat/i,'📋'],[/rukun|fardhu/i,'🧱'],[/batal/i,'❌'],[/makruh/i,'⚠️'],[/sebab/i,'💡'],[/rawatib/i,'🕌'],[/mutlak/i,'🔁'],[/berwaktu|bahagian|pembahagian/i,'🗂️'],[/nisab|kadar/i,'⚖️'],[/fitrah/i,'🌾'],[/asnaf/i,'🤝'],[/harta/i,'💎'],[/sunat/i,'⭐']];
 const H=(h)=>h.replace(/<h3>(.*?)<\/h3>/g,(m,t)=>'<h3><span class="e">'+((M.find(x=>x[0].test(t))||[0,'📌'])[1])+'</span>'+t+'</h3>');
+var SH=[];
+function shDec(s){var d=document.createElement('textarea');d.innerHTML=s.replace(/<[^>]+>/g,'');return d.value}
+function shText(h){
+  var s=h.replace(/<sup[^>]*>([\s\S]*?)<\/sup>/g,'[$1]');
+  s=s.replace(/<ol([^>]*)>([\s\S]*?)<\/ol>/g,function(m,a,inner){var n=0;return '\n'+inner.replace(/<li>/g,function(){n++;return '\n'+n+'. '})+'\n'});
+  s=s.replace(/<li>/g,'\n\u2022 ');
+  s=s.replace(/<(h3|div class="bs")>([\s\S]*?)<\/(?:h3|div)>/g,'\n\n*$2*\n');
+  s=s.replace(/<br\s*\/?>/g,'\n').replace(/<\/(p|div|ol|ul|table|section)>/g,'\n\n');
+  s=shDec(s);
+  return s.replace(/[ \t]+\n/g,'\n').replace(/\n{3,}/g,'\n\n').trim()}
+function shMsg(o,body){return '\uD83D\uDCD6 *'+o.brand+'*\n*'+o.head+'*\n\n'+body+'\n\n\u2501\u2501\u2501\u2501\u2501\u2501\n\uD83D\uDCF2 '+o.foot+'\n'+o.link}
+function shFit(o,max){
+  var body=o.body(),m=shMsg(o,body);if(encodeURIComponent(m).length<=max)return m;
+  var ps=body.split('\n\n'),out=[],tail='\n\n\u2026 (bersambung, baca bab penuh di pautan)';
+  for(var i=0;i<ps.length;i++){var t=out.concat([ps[i]]).join('\n\n')+tail;if(encodeURIComponent(shMsg(o,t)).length>max)break;out.push(ps[i])}
+  if(!out.length){var c=body;while(c.length>50&&encodeURIComponent(shMsg(o,c+tail)).length>max)c=c.slice(0,Math.floor(c.length*.8));return shMsg(o,c+tail)}
+  return shMsg(o,out.join('\n\n')+tail)}
+function shBox(o){var i=SH.push(o)-1,a=' data-i="'+i+'"';
+  return '<div class="share"><div class="sht">Kongsi bab ini</div><div class="shb">'
+   +(navigator.share?'<button class="sb" data-sh="n"'+a+'>Kongsi\u2026</button>':'')
+   +'<button class="sb wa" data-sh="wa"'+a+'>WhatsApp</button>'
+   +'<button class="sb" data-sh="tg"'+a+'>Telegram</button>'
+   +'<button class="sb" data-sh="fb"'+a+'>Facebook</button>'
+   +'<button class="sb" data-sh="x"'+a+'>X</button>'
+   +'<button class="sb" data-sh="c"'+a+'>Salin teks</button></div>'
+   +'<div class="shh">Isi bab disertakan bersama pautan. Facebook dan X hanya menerima pautan.</div></div>'}
+document.addEventListener('click',function(ev){
+  var b=ev.target.closest('[data-sh]');if(!b)return;
+  var o=SH[+b.getAttribute('data-i')],k=b.getAttribute('data-sh'),en=encodeURIComponent;
+  function go(u){if(!window.open(u,'_blank','noopener'))location.href=u}
+  if(k==='wa')go('https://wa.me/?text='+en(shFit(o,9000)));
+  else if(k==='tg')go('https://t.me/share/url?url='+en(o.link)+'&text='+en(shFit(o,7000).split('\n\n\u2501')[0]));
+  else if(k==='fb')go('https://www.facebook.com/sharer/sharer.php?u='+en(o.link));
+  else if(k==='x')go('https://twitter.com/intent/tweet?text='+en(o.head+' \u2014 '+o.brand)+'&url='+en(o.link));
+  else if(k==='n'){navigator.share({title:o.brand,text:shMsg(o,o.body())}).catch(function(){})}
+  else if(k==='c'){var t=shMsg(o,o.body());
+    var ok=function(){b.textContent='Disalin \u2713';setTimeout(function(){b.textContent='Salin teks'},1800)};
+    var fb=function(){var a=document.createElement('textarea');a.value=t;a.style.cssText='position:fixed;opacity:0';document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}document.body.removeChild(a)};
+    if(navigator.clipboard&&navigator.clipboard.writeText)navigator.clipboard.writeText(t).then(ok,fb);else fb()}
+});
+const FKU='https://safwanrusydi.github.io/penilmu/fekah/';
+const SB=c=>shBox({brand:'Belajar Fekah Mazhab Syafie',head:shDec(c.t),link:FKU+'#'+c.id,foot:'Belajar fekah, kuiz dan kuliah audio di sini. Kongsikan supaya lebih ramai mendapat manfaat:',body:()=>shText(c.h)});
 let cur='',ci=0,Q=[];
 function openQ(k,i=0){cur=k;ci=i;const c=C.find(x=>x.id==k),z=c.qs?c.qs[i]:['',c.q];Q=z[1].split('\n').map(s=>s.split('|'));qt.innerText='Kuiz: '+(z[0]||c.t.replace(/&amp;/g,'&'));
 qb.innerHTML=Q.map((x,i)=>`<div class="q"><b>${i+1}. ${x[0]}</b>`+x.slice(1,5).map((o,j)=>`<label class="o"><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join('')+'</div>').join('');
@@ -196,10 +245,10 @@ qr.innerHTML=`Markah anda: ${s}/${Q.length} (${Math.round(s/Q.length*100)}%)`;qs
 
 const yid=s=>{s=(s||'').trim();const m=s.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);return m?m[1]:s};
 const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
-const AUL=(typeof AU!=='undefined'?AU:[]).map(x=>[x[0],x[1],yid(x[2])]).filter(x=>x[2]);
+const AUL=(typeof AU!=='undefined'?AU:[]).map(x=>[({mandi:'wuduk',tayamum:'wuduk'})[x[0]]||x[0],x[1],yid(x[2])]).filter((x,i,a)=>x[2]&&a.findIndex(y=>y[0]==x[0]&&y[2]==x[2])==i);
 const AI=x=>'<div class="au"><b>'+esc(x[1])+'</b><button class="btn yp" data-id="'+x[2]+'">▶ Mainkan</button><a class=\"btn\" style=\"background:var(--a);color:#1b1b1b\" href=\"https://music.youtube.com/watch?v='+x[2]+'\" target=\"_blank\" rel=\"noopener\">🎧 Dengar di YouTube Music</a></div>';
 const Y=k=>{const l=AUL.filter(x=>x[0]==k);return l.length?'<div class="aus"><h3><span class="e">🎧</span>Kuliah Audio ('+l.length+')</h3>'+l.map(AI).join('')+'</div>':''};
-main.innerHTML=C.map(c=>`<section id="${c.id}"><h2>${c.t}</h2>${B(c.id)}${Y(c.id)}${H(c.h)}${(c.qs||[['',c.q]]).map((z,i)=>`<button class="btn" onclick="openQ('${c.id}',${i})">Jawab Kuiz ${z[0]} (${z[1].split('\n').length} soalan)</button>`).join('')}</section>`).join('');
+main.innerHTML=C.map(c=>`<section id="${c.id}"><h2>${c.t}</h2>${B(c.id)}${Y(c.id)}${H(c.h)}${SB(c)}${(c.qs||[['',c.q]]).map((z,i)=>`<button class="btn" onclick="openQ('${c.id}',${i})">Jawab Kuiz ${z[0]} (${z[1].split('\n').length} soalan)</button>`).join('')}</section>`).join('');
 const CI=C.map(c=>c.id),RS=AUL.filter(x=>!CI.includes(x[0]));
 main.innerHTML+='<section id="kuliah"><h2>🎧 Kuliah Audio</h2><p>Bacaan Buku Fiqh Islam Mazhab Syafie (Syarah Matan Abu Syuja&#39;) oleh Penuntut Ilmu Kecil. Kuliah mengikut bab ada dalam setiap bab di atas.</p><a class="btn" href="https://www.youtube.com/playlist?list=PLtDejgme0P1dH1gsWUfg8Va6-SIfV7WPm" target="_blank" rel="noopener">▶ Buka semua di YouTube</a>'+RS.map(AI).join('')+'<p><small>Perlukan sambungan internet. Audio berhenti jika skrin dikunci.</small></p></section>';nav.innerHTML=nav.innerHTML.replace('<a href="#infaq">','<a href="#kuliah">Kuliah</a><a href="#infaq">');
 document.addEventListener('click',e=>{const b=e.target.closest('.yp');if(!b)return;document.querySelectorAll('.au iframe').forEach(f=>{f.parentNode.querySelector('.yp').style.display='';f.remove()});const f=document.createElement('iframe');f.src='https://www.youtube.com/embed/'+b.dataset.id+'?autoplay=1&rel=0';f.allow='autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.title=b.parentNode.querySelector('b').textContent;b.style.display='none';b.parentNode.querySelector('b').after(f)});
