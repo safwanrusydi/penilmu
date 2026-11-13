@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="ms"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Belajar Fekah Mazhab Syafie</title>
+<title>Belajar Fekah Mazhab Syafie</title><meta name="description" content="Ringkasan fekah Mazhab Syafie, kuiz dan kuliah audio. Percuma dan sesuai dibaca di telefon."><meta property="og:type" content="website"><meta property="og:site_name" content="Penuntut Ilmu Kecil"><meta property="og:locale" content="ms_MY"><meta property="og:title" content="Belajar Fekah Mazhab Syafie"><meta property="og:description" content="Ringkasan fekah Mazhab Syafie, kuiz dan kuliah audio. Percuma dan sesuai dibaca di telefon."><meta property="og:url" content="https://safwanrusydi.github.io/penilmu/fekah/"><meta property="og:image" content="https://safwanrusydi.github.io/penilmu/fekah/logo.png"><meta property="og:image:alt" content="Logo Penuntut Ilmu Kecil"><meta name="twitter:card" content="summary">
 <link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1b4332">
 <link rel="icon" href="icon-192.png"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes">
@@ -41,6 +41,8 @@ h3 .e{display:inline-block;width:1.7em;height:1.7em;line-height:1.7em;text-align
 .sb:active{opacity:.7}.sb.wa{background:#1f8f4e;border-color:#1f8f4e;color:#fff;font-weight:bold}
 .shh{margin-top:.5rem;font-size:.8rem;opacity:.75;line-height:1.5}
 section{scroll-margin-top:56px}
+.pb{height:10px;background:#e3ebe6;border-radius:6px;overflow:hidden;margin:.4rem 0 .6rem}.pb i{display:block;height:100%;background:var(--pl)}
+#harian{background:linear-gradient(135deg,#e9f5ed,#fff);border:1px solid #cfe3d6}#harian .fh{font-size:1.12rem;margin:.3rem 0 .6rem}#harian .sb,#pg .sb{margin:.3rem 0}
 footer{background:var(--p);color:#fff;text-align:center;padding:1.5rem 1rem;margin-top:2rem;border-top:4px solid var(--a);font-size:.9rem}
 </style></head><body>
 <header><div class="hd"><img class="lg" src="logo.png" alt="Logo Penuntut Ilmu Kecil"><div><h1>Belajar Fekah Mazhab Syafie</h1><p>Ringkasan Fiqh al-Manhaji oleh Penuntut Ilmu Kecil</p></div></div><a class="btn" href="../" style="text-decoration:none;display:inline-block">← Laman Utama</a> <button class="btn" id="inst">📲 Pasang Aplikasi</button><p id="ios">Pada iPhone: tekan butang Kongsi, kemudian "Tambah ke Skrin Utama".</p></header>
@@ -241,7 +243,7 @@ function openQ(k,i=0){cur=k;ci=i;const c=C.find(x=>x.id==k),z=c.qs?c.qs[i]:['',c
 qb.innerHTML=Q.map((x,i)=>`<div class="q"><b>${i+1}. ${x[0]}</b>`+x.slice(1,5).map((o,j)=>`<label class="o"><input type="radio" name="q${i}" value="${j}"> ${o}</label>`).join('')+'</div>').join('');
 qr.innerHTML='';qs.style.display='block';qm.style.display='flex';qm.querySelector('.mc').scrollTop=0}
 function sub(){let s=0;Q.forEach((x,i)=>{const a=+x[5],p=document.querySelector(`input[name=q${i}]:checked`);document.getElementsByName('q'+i).forEach(r=>{const l=r.parentNode;if(+r.value==a)l.classList.add('ok');else if(r.checked)l.classList.add('no');r.disabled=true});if(p&&+p.value==a)s++});
-qr.innerHTML=`Markah anda: ${s}/${Q.length} (${Math.round(s/Q.length*100)}%)`;qs.style.display='none'}
+rec(s);qr.innerHTML=`Markah anda: ${s}/${Q.length} (${Math.round(s/Q.length*100)}%)`;qs.style.display='none'}
 
 const yid=s=>{s=(s||'').trim();const m=s.match(/(?:v=|youtu\.be\/|embed\/)([\w-]{11})/);return m?m[1]:s};
 const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
@@ -258,4 +260,27 @@ inst.onclick=async()=>{if(dp){dp.prompt();await dp.userChoice;dp=null;inst.style
 addEventListener('appinstalled',()=>{inst.style.display='none'});
 if(/iphone|ipad|ipod/i.test(navigator.userAgent)&&!navigator.standalone)ios.style.display='block';
 if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+
+const F=['taharah|Air mutlak ialah air yang suci dan menyucikan, seperti air hujan, laut, sungai dan perigi.','taharah|Najis mughallazah (anjing dan babi) dibasuh 7 kali dan salah satunya dengan tanah.','taharah|Tiga bangkai yang tidak najis: ikan, belalang dan manusia.','taharah|Najis mukhaffafah ialah air kencing bayi lelaki kurang 2 tahun yang hanya meminum susu ibu. Cukup direnjis air secara rata.','taharah|Beristinjak dengan batu tidak kurang 3 sapuan, dan disunatkan bilangan ganjil.','taharah|Hadas kecil disucikan dengan wuduk, hadas besar disucikan dengan mandi.','wuduk|Wuduk ada 6 fardhu. Niat dalam hati dibuat serentak ketika membasuh bahagian pertama muka.','wuduk|Kadar minimum menyapu kepala dalam wuduk ialah sehelai rambut.','wuduk|Antara sunat wuduk: menyapu kedua telinga dengan air yang baru.','wuduk|Menyentuh kemaluan dengan tapak tangan membatalkan wuduk.','wuduk|Tayamum menggantikan wuduk atau mandi apabila tiada air atau bimbang mudarat. Sapu muka dan kedua tangan hingga siku dengan dua tepukan.','wuduk|Satu tayamum untuk satu solat fardu sahaja, tetapi boleh digunakan bersama solat-solat sunat.','wuduk|Fardhu mandi wajib ada 2: niat dan meratakan air ke seluruh badan hingga ke pangkal rambut.','wuduk|Sebab mandi wajib: keluar mani, jimak, haid, nifas, melahirkan anak dan mati.','solat-fardu|Rukun solat ada 13. Yang pertama ialah niat, serentak dengan takbiratul ihram.','solat-fardu|Syarat sah solat 4: bersuci, mengetahui masuk waktu, menutup aurat dan menghadap kiblat.','solat-fardu|Tasyahhud awal termasuk sunat ab\'adh, bukan rukun.','solat-fardu|Jika tidak mampu berdiri dalam solat fardu, solatlah duduk. Jika tidak mampu, mengiring.','solat-sunat|Rawatib muakkad ada 10 rakaat. Yang paling muakkad ialah 2 rakaat sebelum Subuh.','solat-sunat|Tahiyyatul masjid ialah 2 rakaat sebelum duduk apabila masuk masjid.','solat-sunat|Witir sekurang-kurangnya 1 rakaat dan paling sempurna 11 rakaat.','solat-sunat|Dhuha sekurang-kurangnya 2 rakaat dan paling sempurna 8 rakaat.','solat-sunat|Qiamullail dinamakan tahajjud jika dilakukan selepas tidur.','puasa|Niat puasa fardu mesti dibuat sebelum fajar bagi setiap hari.','puasa|Puasa sunat: Isnin dan Khamis, enam hari Syawal, Arafah (9 Zulhijjah) dan Asyura (10 Muharram).','puasa|Berpuasa pada hari raya hukumnya haram.','zakat|Zakat emas dan perak ialah 2.5% apabila cukup nisab dan haul.','zakat|Zakat tanaman 10% jika diairi hujan, dan 5% jika diairi dengan kos atau usaha.','zakat|Asnaf zakat ada 8: fakir, miskin, amil, muallaf, riqab, gharimin, fisabilillah dan ibnu sabil.','zakat|Zakat fitrah dikeluarkan sejak terbenam matahari pada hari terakhir Ramadan.','haji-umrah|Rukun haji 5: ihram, wukuf di Arafah, tawaf, sa\'i, dan bercukur atau menggunting rambut.','haji-umrah|Rukun umrah sama seperti haji, kecuali wukuf di Arafah.'];
+let fi=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5)%F.length;
+const PK='fekah-p';let P={read:{},score:{}};try{P=Object.assign(P,JSON.parse(localStorage.getItem(PK)||'{}'))}catch(e){}
+const ps=()=>{try{localStorage.setItem(PK,JSON.stringify(P))}catch(e){}};
+main.insertAdjacentHTML('afterbegin','<section id="harian"></section><section id="pg"></section>');
+nav.insertAdjacentHTML('afterbegin','<a href="#harian">Hari Ini</a>');
+C.forEach(c=>document.getElementById(c.id).insertAdjacentHTML('beforeend','<button class="btn" data-rd="'+c.id+'"></button>'));
+function showFH(){const[id,t]=F[fi].split('|'),c=C.find(x=>x.id==id);
+ document.getElementById('harian').innerHTML='<h2>🌙 Fekah Hari Ini</h2><p class="fh">'+t+'</p><p><small>Bab: '+(c.n||c.t.replace(/^\d+\. /,''))+'</small></p><a class="btn" href="#'+id+'">Baca bab penuh</a><button class="sb" data-nx="1">Hukum lain ↻</button>'
+ +shBox({brand:'Belajar Fekah Mazhab Syafie',head:'Fekah Hari Ini',link:FKU+'#'+id,foot:'Belajar fekah, kuiz dan kuliah audio di sini:',body:()=>t}).replace('Kongsi bab ini','Kongsi hukum ini').replace(/<div class="shh">.*?<\/div>/,'')}
+function rec(s){const k=cur+':'+ci;P.score[k]=Math.max(P.score[k]||0,Math.round(s/Q.length*100));ps();upd()}
+function upd(){const n=C.length,d=C.filter(c=>P.read[c.id]).length,sc=Object.values(P.score);
+ document.getElementById('pg').innerHTML='<h2>📈 Kemajuan Anda</h2><div class="pb"><i style="width:'+Math.round(d/n*100)+'%"></i></div><p><b>'+d+'/'+n+'</b> bab sudah dibaca'+(sc.length?' · '+sc.length+' kuiz dijawab, purata markah terbaik <b>'+Math.round(sc.reduce((a,b)=>a+b,0)/sc.length)+'%</b>':'')+'</p>'+(d||sc.length?'<button class="sb" data-pr="1">Set semula</button>':'<p><small>Tandakan bab yang sudah dibaca dan jawab kuiz. Kemajuan disimpan dalam telefon ini sahaja.</small></p>');
+ C.forEach(c=>{const r=P.read[c.id],b=document.querySelector('[data-rd="'+c.id+'"]'),a=nav.querySelector('a[href="#'+c.id+'"]');
+  if(b){b.textContent=r?'✅ Sudah dibaca (tekan untuk batal)':'☑️ Tandakan sudah dibaca';b.style.background=r?'#2d6a4f':''}
+  if(a)a.textContent=(r?'✓ ':'')+a.textContent.replace(/^✓ /,'')});
+ document.querySelectorAll('section .btn[onclick^="openQ("]').forEach(b=>{const m=b.getAttribute('onclick').match(/openQ\('([^']+)',(\d+)\)/);if(!m)return;b.dataset.t=b.dataset.t||b.textContent;const s=P.score[m[1]+':'+m[2]];b.textContent=b.dataset.t+(s!=null?' · terbaik '+s+'%':'')})}
+document.addEventListener('click',e=>{const r=e.target.closest('[data-rd]');
+ if(r){const k=r.dataset.rd;if(P.read[k])delete P.read[k];else P.read[k]=1;ps();upd();return}
+ if(e.target.closest('[data-nx]')){fi=(fi+1)%F.length;showFH();return}
+ if(e.target.closest('[data-pr]')&&confirm('Padam semua kemajuan di telefon ini?')){P={read:{},score:{}};ps();upd()}});
+showFH();upd();
 </script></body></html>
