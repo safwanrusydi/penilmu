@@ -43,6 +43,9 @@ h3 .e{display:inline-block;width:1.7em;height:1.7em;line-height:1.7em;text-align
 section{scroll-margin-top:56px}
 .pb{height:10px;background:#e3ebe6;border-radius:6px;overflow:hidden;margin:.4rem 0 .6rem}.pb i{display:block;height:100%;background:var(--pl)}
 #harian{background:linear-gradient(135deg,#e9f5ed,#fff);border:1px solid #cfe3d6}#harian .fh{font-size:1.12rem;margin:.3rem 0 .6rem}#harian .sb,#pg .sb{margin:.3rem 0}
+html{scroll-behavior:smooth}.toc{list-style:none;margin:0}.toc li{margin:0 0 .5rem}.toc a{display:block;padding:.75rem .9rem;background:#f0f4f1;border-radius:8px;color:var(--p);font-weight:bold;text-decoration:none}.toc a:active{background:#dcebe1}
+.nv{display:flex;gap:8px;flex-wrap:wrap}.nv .btn{flex:1 1 140px;width:auto}
+#ktop{position:fixed;right:14px;bottom:18px;z-index:150;display:none;border-radius:24px;background:var(--p);color:#fff;font-weight:bold;padding:.7rem 1rem;text-decoration:none;box-shadow:0 2px 8px rgba(0,0,0,.3);border:2px solid var(--a)}
 footer{background:var(--p);color:#fff;text-align:center;padding:1.5rem 1rem;margin-top:2rem;border-top:4px solid var(--a);font-size:.9rem}
 </style></head><body>
 <header><div class="hd"><img class="lg" src="logo.png" alt="Logo Penuntut Ilmu Kecil"><div><h1>Belajar Fekah Mazhab Syafie</h1><p>Ringkasan Fiqh al-Manhaji oleh Penuntut Ilmu Kecil</p></div></div><a class="btn" href="../" style="text-decoration:none;display:inline-block">← Laman Utama</a> <button class="btn" id="inst">📲 Pasang Aplikasi</button><p id="ios">Pada iPhone: tekan butang Kongsi, kemudian "Tambah ke Skrin Utama".</p></header>
@@ -265,14 +268,14 @@ const F=['taharah|Air mutlak ialah air yang suci dan menyucikan, seperti air huj
 let fi=Math.floor((Date.now()-new Date().getTimezoneOffset()*6e4)/864e5)%F.length;
 const PK='fekah-p';let P={read:{},score:{}};try{P=Object.assign(P,JSON.parse(localStorage.getItem(PK)||'{}'))}catch(e){}
 const ps=()=>{try{localStorage.setItem(PK,JSON.stringify(P))}catch(e){}};
-main.insertAdjacentHTML('afterbegin','<section id="harian"></section><section id="pg"></section>');
-nav.insertAdjacentHTML('afterbegin','<a href="#harian">Hari Ini</a>');
+main.insertAdjacentHTML('afterbegin','<section id="isi-kandungan"></section><section id="harian"></section><section id="pg"></section>');
+nav.insertAdjacentHTML('afterbegin','<a href="#isi-kandungan">☰ Kandungan</a><a href="#harian">Hari Ini</a>');
 C.forEach(c=>document.getElementById(c.id).insertAdjacentHTML('beforeend','<button class="btn" data-rd="'+c.id+'"></button>'));
 function showFH(){const[id,t]=F[fi].split('|'),c=C.find(x=>x.id==id);
  document.getElementById('harian').innerHTML='<h2>🌙 Fekah Hari Ini</h2><p class="fh">'+t+'</p><p><small>Bab: '+(c.n||c.t.replace(/^\d+\. /,''))+'</small></p><a class="btn" href="#'+id+'">Baca bab penuh</a><button class="sb" data-nx="1">Hukum lain ↻</button>'
  +shBox({brand:'Belajar Fekah Mazhab Syafie',head:'Fekah Hari Ini',link:FKU+'#'+id,foot:'Belajar fekah, kuiz dan kuliah audio di sini:',body:()=>t}).replace('Kongsi bab ini','Kongsi hukum ini').replace(/<div class="shh">.*?<\/div>/,'')}
 function rec(s){const k=cur+':'+ci;P.score[k]=Math.max(P.score[k]||0,Math.round(s/Q.length*100));ps();upd()}
-function upd(){const n=C.length,d=C.filter(c=>P.read[c.id]).length,sc=Object.values(P.score);
+function upd(){toc();const n=C.length,d=C.filter(c=>P.read[c.id]).length,sc=Object.values(P.score);
  document.getElementById('pg').innerHTML='<h2>📈 Kemajuan Anda</h2><div class="pb"><i style="width:'+Math.round(d/n*100)+'%"></i></div><p><b>'+d+'/'+n+'</b> bab sudah dibaca'+(sc.length?' · '+sc.length+' kuiz dijawab, purata markah terbaik <b>'+Math.round(sc.reduce((a,b)=>a+b,0)/sc.length)+'%</b>':'')+'</p>'+(d||sc.length?'<button class="sb" data-pr="1">Set semula</button>':'<p><small>Tandakan bab yang sudah dibaca dan jawab kuiz. Kemajuan disimpan dalam telefon ini sahaja.</small></p>');
  C.forEach(c=>{const r=P.read[c.id],b=document.querySelector('[data-rd="'+c.id+'"]'),a=nav.querySelector('a[href="#'+c.id+'"]');
   if(b){b.textContent=r?'✅ Sudah dibaca (tekan untuk batal)':'☑️ Tandakan sudah dibaca';b.style.background=r?'#2d6a4f':''}
@@ -282,5 +285,12 @@ document.addEventListener('click',e=>{const r=e.target.closest('[data-rd]');
  if(r){const k=r.dataset.rd;if(P.read[k])delete P.read[k];else P.read[k]=1;ps();upd();return}
  if(e.target.closest('[data-nx]')){fi=(fi+1)%F.length;showFH();return}
  if(e.target.closest('[data-pr]')&&confirm('Padam semua kemajuan di telefon ini?')){P={read:{},score:{}};ps();upd()}});
+
+function toc(){const T=document.getElementById('isi-kandungan');if(!T)return;
+ T.innerHTML='<h2>📚 Isi Kandungan</h2><ul class="toc">'+C.map(c=>'<li><a href="#'+c.id+'">'+(P.read[c.id]?'✅ ':'')+c.t+'</a></li>').join('')+'<li><a href="#kuliah">🎧 Kuliah Audio</a></li><li><a href="#infaq">💝 Infaq</a></li><li><a href="#cadangan">💬 Cadangan</a></li></ul>'}
+C.forEach((c,i)=>{const n=C[i+1],p=C[i-1];document.getElementById(c.id).insertAdjacentHTML('beforeend','<div class="nv"><a class="btn" href="#isi-kandungan" style="background:var(--a);color:#1b1b1b">↑ Isi Kandungan</a>'+(n?'<a class="btn" href="#'+n.id+'">Bab seterusnya →</a>':'')+'</div>')});
+document.getElementById('kuliah').insertAdjacentHTML('beforeend','<a class="btn" href="#isi-kandungan" style="background:var(--a);color:#1b1b1b">↑ Isi Kandungan</a>');
+document.body.insertAdjacentHTML('beforeend','<a id="ktop" href="#isi-kandungan">☰ Kandungan</a>');
+addEventListener('scroll',()=>{document.getElementById('ktop').style.display=scrollY>600?'block':'none'},{passive:true});
 showFH();upd();
 </script></body></html>
