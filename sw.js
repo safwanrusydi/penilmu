@@ -1,5 +1,5 @@
-const C = 'pik-v12';
-const ASSETS = ['./', 'index.html', 'bacaan.html', 'baca.html', 'pdfjs/pdf.min.js', 'pdfjs/pdf.worker.min.js', 'pdf/tatacara-solat.pdf', 'pdf/tatacara-wuduk-tayammum.pdf', 'artikel-zikir-pagi-petang.html', 'artikel-sayyidul-istighfar.html', 'artikel-sirah-kelahiran.html', 'artikel-talbis-iblis.html', 'style.css', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
+const C = 'pik-v14';
+const ASSETS = ['./', 'index.html', 'bacaan.html', 'adab.html', 'tentang.html', 'baca.html', 'pdfjs/pdf.min.js', 'pdfjs/pdf.worker.min.js', 'pdf/tatacara-solat.pdf', 'pdf/tatacara-wuduk-tayammum.pdf', 'artikel-zikir-pagi-petang.html', 'artikel-sayyidul-istighfar.html', 'artikel-sirah-kelahiran.html', 'artikel-talbis-iblis.html', 'style.css', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(C).then(c => c.addAll(ASSETS)));
   self.skipWaiting();
